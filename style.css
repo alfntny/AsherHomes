@@ -1,0 +1,505 @@
+/* ---------- 1. Variables ---------- */
+:root {
+  --bg: #0a0a0f;
+  --bg-soft: #12121a;
+  --text: #e8e8f0;
+  --muted: #15181b;
+  --accent: #dbe5e6; /* neon cyan */
+  --nav-height: 70px;
+}
+
+/* ---------- 2. Reset ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative; /* lets .page-bg size itself to the full page height */
+  overflow-x: hidden;
+  background: var(--bg); /* dark fallback behind the photo */
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+/* ---------- 3. Font (Bitcount Ink on headings, UI and numbers) ---------- */
+.logo,
+.nav-links a,
+section h1,
+section h2,
+.card h3,
+.btn,
+.eyebrow,
+.price,
+.dist-km,
+.contact-number,
+.contact-label,
+.contact-action {
+  font-family: "Bitcount Ink", system-ui, sans-serif;
+  font-optical-sizing: auto;
+}
+
+/* ---------- 4. Page background (blurred photo, scrolls with page) ---------- */
+.page-bg {
+  position: absolute;
+  inset: 0; /* covers the whole body, top to bottom */
+  z-index: -1; /* behind all content */
+  overflow: hidden; /* clips the soft blurry edges */
+}
+
+.page-bg::before {
+  content: "";
+  position: absolute;
+  inset: -40px; /* slightly bigger than the frame */
+  background: url("AsherHomePhotos/ash.jpeg") center top / cover no-repeat;
+  filter: blur(18px) brightness(0.4);
+}
+
+/* ---------- 5. Navbar ---------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  background: rgba(10, 10, 15, 0.6);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 100;
+}
+
+.logo {
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--accent);
+}
+
+/* ---------- 6. Sections (transparent so the photo shows through) ---------- */
+section {
+  min-height: 100vh;
+  padding: calc(var(--nav-height) + 2rem) 5% 2rem;
+  background: transparent;
+}
+
+section h2 {
+  font-weight: 300;
+  letter-spacing: 3px;
+  margin-bottom: 2rem;
+}
+
+/* ---------- 7. Home ---------- */
+#home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#home h1 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 200;
+  letter-spacing: 6px;
+}
+
+#home p {
+  color: var(--muted);
+  margin-top: 1rem;
+}
+
+.eyebrow {
+  color: var(--accent);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.price strong {
+  color: var(--accent);
+  font-size: 1.4rem;
+}
+
+.btn {
+  display: inline-block;
+  width: fit-content;
+  margin-top: 2rem;
+  padding: 0.9rem 2.2rem;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  transition:
+    background 0.3s,
+    color 0.3s,
+    box-shadow 0.3s;
+}
+
+.btn:hover {
+  background: var(--accent);
+  color: var(--bg);
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.5);
+}
+
+/* ---------- 8. Facilities ---------- */
+#facilities {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 600px;
+}
+
+.card-grid {
+  flex: 1; /* fill all height left after the heading */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  gap: clamp(1rem, 2vw, 2rem);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.2rem, 3vw, 3rem);
+  background: rgba(
+    157,
+    157,
+    175,
+    0.45
+  ); /* glass, so text is readable over the photo */
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition:
+    transform 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15);
+}
+
+.card-icon {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: 1rem;
+}
+.card h3 {
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  font-weight: 400;
+  margin-bottom: 0.6rem;
+}
+.card p {
+  color: var(--muted);
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+}
+
+/* ---------- 9. Gallery slider ---------- */
+#gallery {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  min-height: 700px;
+  padding-left: 1.5%; /* wider frame */
+  padding-right: 1.5%;
+}
+
+.slider {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* blurred copy fills the frame */
+.slide .bg {
+  object-fit: cover;
+  filter: blur(30px) brightness(0.45);
+  transform: scale(1.15);
+}
+
+/* the real photo, shown whole */
+.slide .fg {
+  object-fit: contain;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(10, 10, 15, 0.5);
+  backdrop-filter: blur(8px);
+  color: var(--text);
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition:
+    background 0.3s,
+    color 0.3s,
+    box-shadow 0.3s;
+}
+
+.slider-btn:hover {
+  background: var(--accent);
+  color: var(--bg);
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.5);
+}
+
+.slider-btn.prev {
+  left: 1.5rem;
+}
+.slider-btn.next {
+  right: 1.5rem;
+}
+
+.slider-count {
+  position: absolute;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.4rem 1.2rem;
+  border-radius: 999px;
+  background: rgba(10, 10, 15, 0.6);
+  backdrop-filter: blur(8px);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+}
+
+/* ---------- 10. Location ---------- */
+#location {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  min-height: 600px;
+}
+
+.location-wrap {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 2rem;
+}
+
+.distances {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.dist {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  padding: 1.2rem 1.5rem;
+  background: rgba(201, 201, 208, 0.45);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: var(--muted);
+}
+
+.dist-km {
+  min-width: 70px;
+  color: var(--accent);
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+
+.distances .btn {
+  align-self: flex-start;
+}
+
+.map-card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 40px rgba(0, 229, 255, 0.08);
+}
+
+.map-card iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: invert(90%) hue-rotate(180deg) brightness(0.9) contrast(0.9); /* dark map */
+}
+
+/* ---------- 11. Contact (centered) ---------- */
+#contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: calc(100dvh - 70px);
+}
+
+.contact-sub {
+  color: var(--muted);
+  margin-bottom: 3rem;
+}
+
+.contact-numbers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 280px;
+  padding: 2.5rem 3rem;
+  background: rgba(63, 63, 63, 0.45);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  text-decoration: none;
+  color: var(--text);
+  transition:
+    transform 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.contact-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15);
+}
+
+.contact-label {
+  color: var(--muted);
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.contact-number {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+.contact-action {
+  color: var(--accent);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ---------- 12. Footer ---------- */
+.footer {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(10, 10, 15, 0.7);
+  color: var(--muted);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+/* ---------- 13. Responsive ---------- */
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #location {
+    height: auto;
+  }
+  .location-wrap {
+    grid-template-columns: 1fr;
+  }
+  .map-card {
+    height: 380px;
+  }
+}
+
+@media (max-width: 600px) {
+  #facilities {
+    height: auto;
+  }
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.logo {
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--accent);
+  font-style: italic; /* add this */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 42px; /* the nav is 70px tall, so this leaves breathing room */
+  width: auto; /* keeps the original proportions */
+  display: block;
+}

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asher Homes</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-bg"></div>
+
+    <nav class="navbar">
+      <div class="logo">Asher Homes</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#facilities">Facilities</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <section id="home">
+      <p class="eyebrow">Kochi . Aluva</p>
+      <h1>ASHER HOMES</h1>
+      <p class="tagline">
+        Semi-furnished apartments, minutes from the airport, metro and rail.
+      </p>
+      <a href="#contact" class="btn">Enquire Now</a>
+    </section>
+
+    <section id="facilities">
+      <h2>Facilities</h2>
+      <div class="card-grid" id="facility-grid"></div>
+    </section>
+
+    <section id="gallery">
+      <h2>Gallery</h2>
+
+      <div class="slider">
+        <div class="slides" id="slides"></div>
+
+        <button class="slider-btn prev" id="prev" aria-label="Previous image">
+          ‹
+        </button>
+        <button class="slider-btn next" id="next" aria-label="Next image">
+          ›
+        </button>
+
+        <div class="slider-count" id="count"></div>
+      </div>
+    </section>
+
+    <section id="location">
+      <h2>Location</h2>
+
+      <div class="location-wrap">
+        <div class="distances">
+          <div class="dist">
+            <span class="dist-km">3 km</span><span>Aluva Railway Station</span>
+          </div>
+          <div class="dist">
+            <span class="dist-km">4 km</span><span>Aluva Metro Station</span>
+          </div>
+          <div class="dist">
+            <span class="dist-km">10 km</span
+            ><span>Cochin International Airport</span>
+          </div>
+          <div class="dist">
+            <span class="dist-km">Near</span><span>Rajagiri Hospital</span>
+          </div>
+
+          <a
+            href="https://maps.app.goo.gl/LmVwjp5sRc4tFq7s5"
+            class="btn"
+            target="_blank"
+            rel="noopener"
+          >
+            Open in Google Maps
+          </a>
+        </div>
+
+        <div class="map-card">
+          <iframe
+            src="https://maps.google.com/maps?q=10.0877753,76.368942&z=16&output=embed"
+            title="Asher Homes location"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          >
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <p class="eyebrow">Get in touch</p>
+      <h2>Contact Us</h2>
+      <p class="contact-sub">
+        Call us to book a visit or ask about availability.
+      </p>
+
+      <div class="contact-numbers">
+        <a href="tel:+919446058789" class="contact-card">
+          <span class="contact-label">Primary</span>
+          <span class="contact-number">+91 94460 58789</span>
+          <span class="contact-action">Tap to call</span>
+        </a>
+
+        <a href="tel:+919446418789" class="contact-card">
+          <span class="contact-label">Secondary</span>
+          <span class="contact-number">+91 94464 18789</span>
+          <span class="contact-action">Tap to call</span>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Asher Homes · Aluva, Kochi</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
