@@ -25,7 +25,7 @@ sections.forEach((section) => observer.observe(section));
 /* ---------- Facilities ---------- */
 const facilities = [
   { icon: "🛋️", title: "Semi-Furnished", text: "Move in comfortably with essentials already in place." },
-  { icon: "🏍️", title: "Parking + Bike Porch", text: "Dedicated parking with a separate porch for two-wheelers." },
+  { icon: "🏍️", title: "Car Parking & Bike Porch", text: "Dedicated parking for each flats with a separate porch for two-wheelers." },
   { icon: "💧", title: "Well Water", text: "Reliable well water supply. Water and common charges just ₹200." },
   { icon: "♻️", title: "Bio Compost & Incinerator", text: "Eco-conscious waste handling on the premises." },
   { icon: "🏥", title: "Near Rajagiri Hospital", text: "Healthcare close by when you need it." },

@@ -1,10 +1,10 @@
 /* ---------- 1. Variables ---------- */
 :root {
-  --bg: #0a0a0f;
-  --bg-soft: #12121a;
+  --bg: #08182b;
+  --bg-soft: #0e0e29;
   --text: #e8e8f0;
-  --muted: #15181b;
-  --accent: #dbe5e6; /* neon cyan */
+  --muted: #149961;
+  --accent: #acd2d6; /* neon cyan */
   --nav-height: 70px;
 }
 
@@ -20,14 +20,15 @@ html {
 }
 
 body {
-  position: relative; /* lets .page-bg size itself to the full page height */
-  overflow-x: hidden;
-  background: var(--bg); /* dark fallback behind the photo */
-  color: var(--text);
-  font-family: "Segoe UI", system-ui, sans-serif;
+  background: var(
+    --bg
+  ); /* dark background: this is the line that went missing */
+  color: var(--text); /* light text */
+  font-family: "Unbounded", sans-serif;
+  font-optical-sizing: auto;
   line-height: 1.6;
+  overflow-x: hidden;
 }
-
 /* ---------- 3. Font (Bitcount Ink on headings, UI and numbers) ---------- */
 .logo,
 .nav-links a,
@@ -69,13 +70,15 @@ section h2,
   width: 100%;
   height: var(--nav-height);
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* links centered; use flex-end for the right side */
   align-items: center;
   padding: 0 5%;
-  background: rgba(10, 10, 15, 0.6);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   z-index: 100;
+  /* no background, blur or border: the bar is gone */
+}
+
+.nav-links a {
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8); /* keeps links readable over photos */
 }
 
 .logo {
@@ -502,4 +505,22 @@ section h2 {
   height: 42px; /* the nav is 70px tall, so this leaves breathing room */
   width: auto; /* keeps the original proportions */
   display: block;
+}
+
+#home {
+  position: relative;
+  isolation: isolate; /* keeps the z-index: -1 layer inside this section */
+  overflow: hidden; /* clips the blurred edges */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#home::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  z-index: -1;
+  background: url("AsherHomePhotos/ash.jpeg") center / cover no-repeat;
+  filter: blur(6px) brightness(0.5);
 }
